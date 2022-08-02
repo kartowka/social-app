@@ -76,14 +76,17 @@ const CreatePostModal: FC = () => {
 	const { userData } = useContext(UserContext) as UserContextType
 	const [height, setHeight] = useState(35)
 	const [modalVisible, setModalVisible] = useState(false)
-	const [name, setName] = useState(`${userData?.firstName} ${userData?.lastName}`)
+	const [name, setName] = useState('')
 	const profileAvatar = userData?.imageURL
 	const [description, setDescription] = useState('Whats on your mind?')
 	const [embedded_photo, setEmbeddedPhoto] = useState<string>('')
 	const [data, setData] = useState<messageProps>({ name: name, body: description, imageURL: embedded_photo })
 	useEffect(() => {
+		if (userData != undefined || userData != null) {
+			setName(`${userData.firstName} ${userData.lastName}`)
+		}
 		requestPermission()
-	}, [])
+	}, [name])
 	const requestPermission = async () => {
 		const response = await ImagePicker.requestCameraPermissionsAsync()
 		if (!response.granted) {
