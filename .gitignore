@@ -134,5 +134,6 @@ npm-debug.*
 *.orig.*
 web-build/
 .expo*
-
-
+.pxd
+frontend/src/assets/images/Untitled.pxd/*
+backend/uploads
