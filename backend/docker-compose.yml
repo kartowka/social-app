@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  mongo:
+    hostname: socialapp
+    container_name: mongo-socialapp
+    build:
+      context: utils/mongoDB
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - '27017:27017'
+    networks:
+      - socialapp-network
+  mongo-express:
+    container_name: mongo-express-socialapp
+    build:
+      context: utils/mongo-express
+    ports:
+      - '8081:8081'
+    depends_on:
+      - mongo
+    networks:
+      - socialapp-network
+  redis:
+    container_name: redis-socialapp
+    build:
+      context: utils/redis
+    ports:
+      - '6379:6379'
+    networks:
+      - socialapp-network
+  nginx:
+    container_name: nginx-socialapp
+    build:
+      context: utils/nginx
+    hostname: nginx
+    ports:
+      - '80:80'
+    networks:
+      - socialapp-network
+volumes:
+  mongodata:
+networks:
+  socialapp-network:
+    external: true
