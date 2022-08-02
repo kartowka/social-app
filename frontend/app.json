@@ -1,7 +1,9 @@
 {
   "expo": {
+    "owner": "kartowka",
     "name": "frontend",
     "slug": "frontend",
+    "scheme": "frontend",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
