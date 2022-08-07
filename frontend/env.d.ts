@@ -2,6 +2,8 @@ declare module '@env' {
 	export const BACKEND_SERVICE_URL: string
 	export const GOOGLE_CLIENT_ID: string
 	export const FACEBOOK_CLIENT_ID: string
+	export const BACKEND_SERVICE_PORT: string
+	export const BACKEND_SERVICE_API_ROUTE: string
 }
 /**
  *  this file contain type declaration for the .env file, Typescript fix.
