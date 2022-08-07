@@ -1,5 +1,6 @@
 import Icons from '@expo/vector-icons/MaterialCommunityIcons'
 import { Platform, StyleSheet } from 'react-native'
+import { BACKEND_SERVICE_URL, BACKEND_SERVICE_PORT } from '@env'
 
 const BORDERTEST = StyleSheet.create({
 	border: {
@@ -36,7 +37,7 @@ const defaultScreenOptionBottomTab = ({ route }: any) => ({
 	tabBarActiveTintColor: '#1fdf64',
 	tabBarInactiveTintColor: '#909090',
 })
-const serverURL = 'http://192.168.1.212:3000'
+const serverURL = `${BACKEND_SERVICE_URL}:${BACKEND_SERVICE_PORT}`
 const endpoints = {
 	facebook: serverURL + '/facebook',
 	google: serverURL + '/google',
