@@ -9,16 +9,15 @@ import { AuthContext, UserContext } from 'services/context'
 import { ActivityIndicator, View } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MainBottomTabParamList, RootStackParamList, UserDataProps } from 'types'
+import { BACKEND_SERVICE_URL, BACKEND_SERVICE_PORT } from '@env'
 import io from 'socket.io-client'
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const Tab = createBottomTabNavigator<MainBottomTabParamList>()
-const socket = io('http://192.168.1.175:3000')
-
+const socket = io(`${BACKEND_SERVICE_URL}:${BACKEND_SERVICE_PORT}`)
 const Router: FC = () => {
 	const [userData, setUserData] = useState<UserDataProps>()
 	const [isLoading, setIsLoading] = useState(false)
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
-
 	const authContext = useMemo(
 		() => ({
 			signIn: (user: UserDataProps) => {
